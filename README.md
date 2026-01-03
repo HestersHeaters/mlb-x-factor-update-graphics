@@ -2,9 +2,15 @@
 
 Generate polished **Teams/Hitters/Pitchers** tables from Excel using **R/gt**. Deterministic HTML/PNG outputs, projection-vs-current heatmaps on key sabermetrics & advanced stats, offline fonts/logos, and optional baseline drift checks.
 
+[![Restore & Smoke](https://github.com/HestersHeaters/mlb-x-factor-update-graphics/actions/workflows/restore-smoke.yml/badge.svg)](https://github.com/HestersHeaters/mlb-x-factor-update-graphics/actions/workflows/restore-smoke.yml)
+![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue)
+![R](https://img.shields.io/badge/R-4.3.x-276DC3)
+![Platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Windows-lightgrey)
+
 ---
 
 ## Table of Contents
+- [Preview](#preview)
 - [Quick Start](#quick-start)
 - [Requirements](#requirements)
 - [Project Structure](#project-structure)
@@ -14,6 +20,22 @@ Generate polished **Teams/Hitters/Pitchers** tables from Excel using **R/gt**. D
 - [Fonts & Logos](#fonts--logos)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
+
+---
+
+## Preview
+
+<a href="samples/teams_nl_w_eos_2025.png">
+  <img src="samples/teams_nl_w_eos_2025.png" width="750" alt="Teams — NL West — End of Season 2025" />
+</a>
+
+<a href="samples/hitters_al_e_eos_2025.png">
+  <img src="samples/hitters_al_e_eos_2025.png" width="750" alt="Hitters — AL East — End of Season 2025" />
+</a>
+
+<a href="samples/pitchers_nl_c_eos_2025.png">
+  <img src="samples/pitchers_nl_c_eos_2025.png" width="750" alt="Pitchers — NL Central — End of Season 2025" />
+</a>
 
 ---
 
