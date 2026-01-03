@@ -1,0 +1,23 @@
+# ---- RStudio & R User Files ----
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+
+# ------ Editors / OS Junk -------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ----- Outputs & Transient ------
+outputs/
+build/drift/
+
+# ------ renv Local Caches -------
+renv/library/
+renv/staging/
+renv/renv-*/
+!renv/activate.R
+!renv/settings.json
