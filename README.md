@@ -1,6 +1,6 @@
 # mlb_x_factor_project — MLB X Factor Update Graphics
 
-Generate polished **teams / hitters / pitchers** tables from Excel with fully reproducible **HTML + PNG** outputs. Deterministic rendering, offline fonts/logos, and optional baseline drift checks.
+Generate polished **Teams/Hitters/Pitchers** tables from Excel using **R/gt**. Deterministic HTML/PNG outputs, projection-vs-current heatmaps on key sabermetrics & advanced stats, offline fonts/logos, and optional baseline drift checks.
 
 ---
 
