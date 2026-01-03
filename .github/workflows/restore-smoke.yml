@@ -56,7 +56,6 @@ jobs:
       - name: Setup pandoc
         uses: r-lib/actions/setup-pandoc@v2
 
-      # ---- Plain renv restore (NO cache) ----
       - name: Install renv
         shell: Rscript {0}
         run: |
@@ -80,10 +79,9 @@ jobs:
           renv::activate(".")
           renv::restore(prompt = FALSE, clean = TRUE)
 
-      # Only assert data on default branch of your main repo (replace OWNER)
       - name: Assert Excel files exist (main repo default branch only)
         if: >
-          github.repository_owner == 'OWNER' &&
+          github.repository_owner == 'HesterHeaters' &&
           github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         shell: Rscript {0}
         run: |
