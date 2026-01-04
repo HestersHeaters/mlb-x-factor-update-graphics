@@ -30,7 +30,7 @@ Generate polished **Teams/Hitters/Pitchers** tables from Excel using **R/gt**. D
 </a>
 
 <a href="samples/al_e_hitters_eos_2025_sample.png">
-  <img src="samples/ale_hitters_eos_2025_sample.png" width="750" alt="Hitters — AL East — End of Season 2025" />
+  <img src="samples/al_e_hitters_eos_2025_sample.png" width="750" alt="Hitters — AL East — End of Season 2025" />
 </a>
 
 <a href="samples/nl_c_pitchers_eos_2025_sample.png">
