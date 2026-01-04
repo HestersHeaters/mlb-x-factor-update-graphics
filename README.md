@@ -25,16 +25,16 @@ Generate polished **Teams/Hitters/Pitchers** tables from Excel using **R/gt**. D
 
 ## Preview
 
-<a href="samples/teams_nl_w_eos_2025.png">
-  <img src="samples/teams_nl_w_eos_2025.png" width="750" alt="Teams — NL West — End of Season 2025" />
+<a href="samples/nl_w_teams_eos_2025_sample.png">
+  <img src="samples/nl_w_teams_eos_2025_sample.png" width="750" alt="Teams — NL West — End of Season 2025" />
 </a>
 
-<a href="samples/hitters_al_e_eos_2025.png">
-  <img src="samples/hitters_al_e_eos_2025.png" width="750" alt="Hitters — AL East — End of Season 2025" />
+<a href="samples/al_e_hitters_eos_2025_sample.png">
+  <img src="samples/ale_hitters_eos_2025_sample.png" width="750" alt="Hitters — AL East — End of Season 2025" />
 </a>
 
-<a href="samples/pitchers_nl_c_eos_2025.png">
-  <img src="samples/pitchers_nl_c_eos_2025.png" width="750" alt="Pitchers — NL Central — End of Season 2025" />
+<a href="samples/nl_c_pitchers_eos_2025_sample.png">
+  <img src="samples/nl_c_pitchers_eos_2025_sample.png" width="750" alt="Pitchers — NL Central — End of Season 2025" />
 </a>
 
 ---
