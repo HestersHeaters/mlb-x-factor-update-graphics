@@ -524,6 +524,10 @@ build_teams_table <- function(df_input, league = "NL", division = "W") {
     gt::tab_style(
       style = gt::cell_text(size = gt::px(20), weight = "bold"),
       locations = gt::cells_column_labels(columns = gt::everything())
+    ) %>%
+    gt::tab_style(
+      style = gt::cell_borders(sides = "left", color = "transparent", weight = gt::px(1)),
+      locations = gt::cells_body(columns = Team)
     )
   
   gt_table
@@ -1017,3 +1021,5 @@ run_with_excel <- function(input_xlsx,
   
   invisible(tbl)
 }
+
+
