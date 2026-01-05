@@ -13,7 +13,7 @@ Generate polished **teams / hitters / pitchers** tables from Excel with fully re
 5. [Baselines (Drift Detection)](#baselines-drift-detection)
 6. [Reproducibility & Portability](#reproducibility--portability)
 7. [Project Structure](#project-structure)
-8. [Diffs (Original → Current)](#diffs-original--current)
+8. [Diffs from Original Scripts](#diffs-from-original-scripts)
 9. [Reproducing Diffs](#reproducing-diffs)
 10. [Troubleshooting](#troubleshooting)
 11. [License](#license)
