@@ -159,49 +159,49 @@ baseline_<kind>_<league>_<division>_<period>.txt
 
 ## Project Structure
 
-create_x_factor_update_graphics.R         — Core table builders + utilities; exposes run_with_excel()
+create_x_factor_update_graphics.R         — Core table builders + utilities; exposes `run_with_excel()`  
 render_x_factor_update_graphics.R         — Interactive runner (menus, scope, baselines)
 
-bootstrap.R                               — One-time setup: renv restore, backend hints, preflight
+bootstrap.R                               — One-time setup: renv restore, backend hints, preflight  
 preflight.R                               — Local environment checks with actionable fixes
 
-mlb_x_factor_project.Rproj                — RStudio project (opens with renv auto-activation)
-.Rprofile                                 — Auto-activates renv; pins CRAN mirror and options
-renv.lock                                 — Pinned package versions for reproducibility
-renv/
-├─ activate.R                             — renv bootstrap (auto-run via .Rprofile)
+mlb_x_factor_project.Rproj                — RStudio project (opens with renv auto-activation)  
+.Rprofile                                 — Auto-activates renv; pins CRAN mirror and options  
+renv.lock                                 — Pinned package versions for reproducibility  
+renv/  
+├─ activate.R                             — renv bootstrap (auto-run via `.Rprofile`)  
 └─ settings.json                          — renv project settings
 
-assets/
-├─ mlb/
-│  └─ <team>.png                          — Local team logos (e.g., ari.png, wsh.png)
-└─ quicksand_font/
-   ├─ Quicksand-Regular.woff2 / .ttf      — Quicksand Regular for offline embedding
-   ├─ Quicksand-Bold.woff2    / .ttf      — Quicksand Bold for offline embedding
+assets/  
+├─ mlb/  
+│  └─ <team>.png                          — Local team logos (e.g., `ari.png`, `wsh.png`)  
+└─ quicksand_font/  
+   ├─ Quicksand-Regular.woff2 / .ttf      — Quicksand Regular for offline embedding  
+   ├─ Quicksand-Bold.woff2    / .ttf      — Quicksand Bold for offline embedding  
    └─ Quicksand-VariableFont_wght.ttf     — Variable font fallback
 
-data/
-├─ team_data_x_factor_update.xlsx         — Teams workbook (input)
-├─ hitter_data_x_factor_update.xlsx       — Hitters workbook (input)
+data/  
+├─ team_data_x_factor_update.xlsx         — Teams workbook (input)  
+├─ hitter_data_x_factor_update.xlsx       — Hitters workbook (input)  
 └─ pitcher_data_x_factor_update.xlsx      — Pitchers workbook (input)
 
-build/
-├─ baselines/
-│  └─ baseline_<kind>_<league>_<division>_<sheet>.txt  — HTML hash baselines (drift checks)
-└─ diff/
-   ├─ INDEX.md                             — Diff index with links
-   ├─ teams_changelog.md / teams_side_by_side.html
-   ├─ hitters_changelog.md / hitters_side_by_side.html
+build/  
+├─ baselines/  
+│  └─ baseline_<kind>_<league>_<division>_<sheet>.txt  — HTML hash baselines (drift checks)  
+└─ diff/  
+   ├─ INDEX.md                             — Diff index with links  
+   ├─ teams_changelog.md / teams_side_by_side.html  
+   ├─ hitters_changelog.md / hitters_side_by_side.html  
    └─ pitchers_changelog.md / pitchers_side_by_side.html
 
-make_diffs.R                               — One-click driver: writes changelogs + HTML diffs to build/diff/
-tools/
+make_diffs.R                               — One-click driver: writes changelogs + HTML diffs to `build/diff/`  
+tools/  
 └─ x_factor_diffs.R                        — Diff engine (capability probes, package deltas, HTML side-by-side)
 
 outputs/                                   — Rendered PNG/HTML (git-ignored)
 
-.github/
-└─ workflows/
+.github/  
+└─ workflows/  
    └─ restore-smoke.yml                    — CI: renv restore + syntax smoke test
 
 ---
