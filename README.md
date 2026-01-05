@@ -159,6 +159,7 @@ baseline_<kind>_<league>_<division>_<period>.txt
 
 ## Project Structure
 
+```
 create_x_factor_update_graphics.R         — Core table builders + utilities; exposes `run_with_excel()`  
 render_x_factor_update_graphics.R         — Interactive runner (menus, scope, baselines)
 
@@ -203,6 +204,7 @@ outputs/                                   — Rendered PNG/HTML (git-ignored)
 .github/  
 └─ workflows/  
    └─ restore-smoke.yml                    — CI: renv restore + syntax smoke test
+```
 
 ---
 
