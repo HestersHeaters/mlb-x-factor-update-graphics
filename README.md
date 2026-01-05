@@ -218,7 +218,6 @@ This repo includes **curated narrative diffs** and optional **side-by-side HTML*
 - **Pitchers:** `build/diff/pitchers_changelog.md`  (HTML: `build/diff/pitchers_side_by_side.html`)
 
 The **original code** is stored in a separate branch (`Original---7.10.25`).
-> Diff scripts are intentionally **not** in `main` branch. They can be shared on request or hosted as a gist.
 
 ### Highlights (Original → Current)
 - **Unified, parameterized engine** for league/division/sheet (no hard-coding).
