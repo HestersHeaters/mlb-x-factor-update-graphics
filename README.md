@@ -92,6 +92,10 @@ xcode-select --install
 
 ### Interactive (recommended)
 ```r
+# one-time per machine
+source("bootstrap.R")          # renv restore, backend hints, preflight.R (sanity checks - ✅ / ❌ with fixes)
+
+# interactive runner (menus: kind/scope/sheet + baselines)
 source("render_x_factor_update_graphics.R")
 ```
 You choose:
