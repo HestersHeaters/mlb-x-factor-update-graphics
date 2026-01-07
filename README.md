@@ -2,6 +2,15 @@
 
 Generate polished **teams / hitters / pitchers** tables from Excel with fully reproducible **HTML + PNG** outputs. Deterministic rendering, offline fonts/logos, and optional baseline drift checks.
 
+<!-- Badges -->
+[![Restore & Smoke](https://github.com/HestersHeaters/mlb-x-factor-update-graphics/actions/workflows/restore-smoke.yml/badge.svg)](https://github.com/HestersHeaters/mlb-x-factor-update-graphics/actions/workflows/restore-smoke.yml)
+![R](https://img.shields.io/badge/R-4.3.x-276DC3?logo=r&logoColor=white)
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-blue.svg)](LICENSE)
+![Platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Windows-lightgrey)
+![Made with gt](https://img.shields.io/badge/made%20with-gt-444?logo=r&logoColor=white)
+![renv](https://img.shields.io/badge/renv-locked-blue)
+![Repo size](https://img.shields.io/github/repo-size/HestersHeaters/mlb-x-factor-update-graphics)
+
 ---
 
 ## Table of Contents
@@ -217,7 +226,7 @@ This repo includes **curated narrative diffs** and optional **side-by-side HTML*
 - **Hitters:** `build/diff/hitters_changelog.md`  (HTML: `build/diff/hitters_side_by_side.html`)
 - **Pitchers:** `build/diff/pitchers_changelog.md`  (HTML: `build/diff/pitchers_side_by_side.html`)
 
-The **original code** is stored in a separate branch (`Original---5.10.25`).
+The **original code** is stored in a separate branch (`Original---7.10.25`).
 
 ### Highlights (Original → Current)
 - **Unified, parameterized engine** for league/division/sheet (no hard-coding).
