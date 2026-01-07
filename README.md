@@ -1,6 +1,8 @@
 # mlb_x_factor_project — MLB X Factor Update Graphics
 
-Generate polished **teams / hitters / pitchers** tables from Excel with fully reproducible **HTML + PNG** outputs. Deterministic rendering, offline fonts/logos, and optional baseline drift checks.
+Generate polished, presentation-ready **teams / hitters / pitchers** performance tables from Excel with reproducible **HTML + PNG** outputs.  
+Built for portability: locked R environment (**renv**), deterministic rendering, offline fonts/logos, and optional baseline drift detection.  
+**Run:** one-time `bootstrap.R`, then `render_x_factor_update_graphics.R`.
 
 <!-- Badges -->
 [![Restore & Smoke](https://github.com/HestersHeaters/mlb-x-factor-update-graphics/actions/workflows/restore-smoke.yml/badge.svg)](https://github.com/HestersHeaters/mlb-x-factor-update-graphics/actions/workflows/restore-smoke.yml)
@@ -12,6 +14,16 @@ Generate polished **teams / hitters / pitchers** tables from Excel with fully re
 ![Repo size](https://img.shields.io/github/repo-size/HestersHeaters/mlb-x-factor-update-graphics)
 
 ---
+
+## Value Proposition
+
+- **Standardized reporting** across divisions & time snapshots
+- **Consistent, presentation-ready visuals** for stakeholders with no manual formatting required
+- **Reproducible & portable** across machines (collaboration-ready)
+- **At-a-glance interpretability** by color gradient encoding vs projection (red above, blue below)
+- **Optional baseline drift checks** to catch unintended visual changes early
+
+--
 
 ## Table of Contents
 
@@ -102,7 +114,7 @@ You choose:
 - **Kind:** teams / hitters / pitchers / ALL
 - **Scope:** single division (AL/NL × W/E/C) or all divisions
 - **Sheet:** timestamp snapshot
-- **Baselines:** enforce and/or write per kind x league x division x sheet
+- **Baselines:** enforce and/or write per kind x league x division x sheet; see **Baselines (Drift Detection)** below for more info
 
 **Outputs**
 ```
@@ -140,6 +152,13 @@ Baselines live under `build/baselines/` and are **per kind × league × division
 baseline_<kind>_<league>_<division>_<period>.txt
 # e.g., baseline_teams_al_w_july_2025.txt
 ```
+
+### Recommended Workflow
+
+Baselines are included so the **default workflow is to enforce drift checks** (i.e., treat unexpected visual changes as a signal to investigate).  
+If you intentionally change data, styling, or rendering behavior, you can **write/update baselines** to accept the new output as the new standard.
+
+### Features
 
 - **Read (back-compat):** legacy uppercase/old patterns are detected.
 - **Write (canonical):** filenames are always lower_snake_case.
