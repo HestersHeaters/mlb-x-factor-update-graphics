@@ -133,42 +133,53 @@ kind_slug <- function(kind) {
 
 # ----------------------------- Baselines ------------------------------
 
-normalize_html_for_baseline <- function(path) {
-  x <- readLines(path, warn = FALSE, encoding = "UTF-8")
+baseline_read_path_for <- function(league, division, kind, sheet) {
+  ks    <- kind_slug(kind)
+  lg_lo <- to_snake(league)
+  dv_lo <- to_snake(division)
+  lg_up <- toupper(league)
+  dv_up <- toupper(division)
+  snew  <- sheet_slug(sheet)
+  sold  <- safe_component(sheet)
   
-  # Normalize line endings + trim trailing spaces
-  x <- gsub("\r\n?", "\n", x)
-  x <- sub("[ \t]+$", "", x, perl = TRUE)
+  dir <- file.path("build","baselines")
   
-  # gt gives a randomized outer <div id="xxxxxxxx"> and CSS with "#xxxxxxxx"
-  # Replace any id="xxxx..." with a stable id, and rewrite selectors to match.
-  # (ids are typically lower-case letters/numbers, length >= 8)
-  x <- gsub('id="[a-z0-9]{8,}"', 'id="gt_stable"', x)
-  x <- gsub('#[a-z0-9]{8,}(\\b)', '#gt_stable\\1', x)
+  new_lo <- file.path(dir, sprintf("baseline_%s_%s_%s_%s.txt", ks, lg_lo, dv_lo, snew))
+  new_up <- file.path(dir, sprintf("baseline_%s_%s_%s_%s.txt", ks, lg_up, dv_up, snew))
   
-  paste(x, collapse = "\n")
+  kind_legacy <- if (tolower(kind) == "standings") "teams" else tolower(kind)
+  old_up <- file.path(dir, sprintf("baseline_%s_%s_%s_%s.txt", kind_legacy, lg_up, dv_up, sold))
+  old_lo <- file.path(dir, sprintf("baseline_%s_%s_%s_%s.txt", kind_legacy, lg_lo, dv_lo, sold))
+  
+  if (file.exists(new_lo)) return(new_lo)
+  if (file.exists(new_up)) return(new_up)
+  if (file.exists(old_up)) return(old_up)
+  if (file.exists(old_lo)) return(old_lo)
+  new_lo
 }
 
-# Recompute baseline as SHA256 of the normalized HTML text
-write_html_baseline <- function(rendered_html, baseline_path) {
-  dir.create(dirname(baseline_path), recursive = TRUE, showWarnings = FALSE)
-  norm_txt <- normalize_html_for_baseline(rendered_html)
-  sha <- digest::digest(norm_txt, algo = "sha256")
-  writeLines(sha, baseline_path)
-  invisible(sha)
+baseline_write_path_for <- function(league, division, kind, sheet) {
+  ks    <- kind_slug(kind)
+  lg_lo <- to_snake(league)
+  dv_lo <- to_snake(division)
+  snew  <- sheet_slug(sheet)
+  file.path("build","baselines", sprintf("baseline_%s_%s_%s_%s.txt", ks, lg_lo, dv_lo, snew))
 }
 
-maybe_check_html_baseline <- function(rendered_html, baseline_path) {
-  if (is.na(baseline_path)) return(invisible(TRUE))
-  if (!file.exists(baseline_path)) {
-    write_html_baseline(rendered_html, baseline_path)  # first run auto-init
-    return(invisible(TRUE))
-  }
-  cur  <- digest::digest(normalize_html_for_baseline(rendered_html), algo = "sha256")
-  base <- readLines(baseline_path, warn = FALSE)
-  if (!identical(cur, base)) stop("❌ Drift detected vs baseline (normalized). If intentional, update baseline.")
-  invisible(TRUE)
+write_baseline_lower <- function(out_html, target_path) {
+  dir.create(dirname(target_path), recursive = TRUE, showWarnings = FALSE)
+  base_lower <- tolower(basename(target_path))
+  base_lower <- gsub("_+", "_", base_lower)
+  base_lower <- gsub("^_|_$", "", base_lower)
+  final_path <- file.path(dirname(target_path), base_lower)
+  write_html_baseline(out_html, final_path)   # defined in create script
+  invisible(final_path)
 }
+
+ensure_dir("build"); ensure_dir("outputs"); ensure_dir("build/drift")
+ensure_dir(file.path("build","baselines"))
+
+
 # ------------------------------- Menu ---------------------------------
 
 kind_idx <- menu(c("Teams","Hitters","Pitchers","ALL"), title = "Select table type:")

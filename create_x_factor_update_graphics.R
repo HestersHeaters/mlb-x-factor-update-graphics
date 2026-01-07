@@ -66,7 +66,6 @@ detect_png_backend <- function() {
   }
 }
 
-
 # ------------------------- File System Utils -------------------------
 
 ensure_parent_dir <- function(path) {
@@ -77,11 +76,33 @@ ensure_parent_dir <- function(path) {
 
 # ---------------------- Baseline (HTML Hash) -------------------------
 
-compute_sha256 <- function(path) digest::digest(file = path, algo = "sha256")
+canonicalize_html_for_hash <- function(path) {
+  x <- readLines(path, warn = FALSE, encoding = "UTF-8")
+  x <- gsub("\r\n?", "\n", x)
+  x <- sub("[ \t]+$", "", x, perl = TRUE)
+  
+  first <- grep('<div id="[^"]+"', x, perl = TRUE)[1]
+  if (!is.na(first)) {
+    id <- sub('.*<div id="([^"]+)".*', "\\1", x[first])
+    if (nzchar(id)) {
+      rx_attr <- paste0('id="', id, '"')
+      rx_hash <- paste0("#", id)
+      x <- gsub(rx_attr, 'id="gt_fixed"', x, fixed = FALSE)
+      x <- gsub(rx_hash, "#gt_fixed",     x, fixed = FALSE)
+    }
+  }
+  
+  paste(x, collapse = "\n")
+}
+
+compute_sha256_html <- function(path) {
+  txt <- canonicalize_html_for_hash(path)
+  digest::digest(txt, algo = "sha256")
+}
 
 write_html_baseline <- function(rendered_html, baseline_path) {
   dir.create(dirname(baseline_path), recursive = TRUE, showWarnings = FALSE)
-  sha <- compute_sha256(rendered_html)
+  sha <- compute_sha256_html(rendered_html)
   writeLines(sha, baseline_path)
   invisible(sha)
 }
@@ -89,12 +110,14 @@ write_html_baseline <- function(rendered_html, baseline_path) {
 maybe_check_html_baseline <- function(rendered_html, baseline_path) {
   if (is.na(baseline_path)) return(invisible(TRUE))
   if (!file.exists(baseline_path)) {
-    write_html_baseline(rendered_html, baseline_path)  # first run auto-init
+    write_html_baseline(rendered_html, baseline_path)  # first run → initialize
     return(invisible(TRUE))
   }
-  cur  <- compute_sha256(rendered_html)
+  cur  <- compute_sha256_html(rendered_html)
   base <- readLines(baseline_path, warn = FALSE)
-  if (!identical(cur, base)) stop("❌ Drift detected vs baseline. Re-run write_html_baseline() if intentional.")
+  if (!identical(cur, base)) {
+    stop("❌ Drift detected vs baseline (after canonicalization). If intentional, update the baseline.")
+  }
   invisible(TRUE)
 }
 
