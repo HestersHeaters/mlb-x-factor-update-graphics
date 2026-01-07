@@ -1,8 +1,6 @@
 # mlb_x_factor_project — MLB X Factor Update Graphics
 
-Generate polished, presentation-ready **teams / hitters / pitchers** performance tables from Excel with reproducible **HTML + PNG** outputs.  
-Built for portability: locked R environment (**renv**), deterministic rendering, offline fonts/logos, and optional baseline drift detection.  
-**Run:** one-time `bootstrap.R`, then `render_x_factor_update_graphics.R`.
+Generate polished, presentation-ready **teams / hitters / pitchers** performance tables from Excel with reproducible **HTML + PNG** outputs. Built for portability: locked R environment (**renv**), deterministic rendering, offline fonts/logos, and optional baseline drift detection. **Run:** one-time `bootstrap.R`, then `render_x_factor_update_graphics.R`.
 
 <!-- Badges -->
 [![Restore & Smoke](https://github.com/HestersHeaters/mlb-x-factor-update-graphics/actions/workflows/restore-smoke.yml/badge.svg)](https://github.com/HestersHeaters/mlb-x-factor-update-graphics/actions/workflows/restore-smoke.yml)
@@ -23,7 +21,7 @@ Built for portability: locked R environment (**renv**), deterministic rendering,
 - **At-a-glance interpretability** by color gradient encoding vs projection (red above, blue below)
 - **Optional baseline drift checks** to catch unintended visual changes early
 
---
+---
 
 ## Table of Contents
 
@@ -155,8 +153,7 @@ baseline_<kind>_<league>_<division>_<period>.txt
 
 ### Recommended Workflow
 
-Baselines are included so the **default workflow is to enforce drift checks** (i.e., treat unexpected visual changes as a signal to investigate).  
-If you intentionally change data, styling, or rendering behavior, you can **write/update baselines** to accept the new output as the new standard.
+Baselines are included so the **default workflow is to enforce drift checks** (i.e., treat unexpected visual changes as a signal to investigate). If you intentionally change data, styling, or rendering behavior, you can **write/update baselines** to accept the new output as the new standard.
 
 ### Features
 
